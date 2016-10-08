@@ -10,7 +10,7 @@ RUN buildDeps=' \
 	&& rm -r /var/lib/apt/lists/*
 	
 RUN apt-get update \
-	&& apt-get install -y vi \
+	&& apt-get install -y vim \
 	&& rm -r /var/lib/apt/lists/*
 
 ENV RLM_PREFIX /opt
