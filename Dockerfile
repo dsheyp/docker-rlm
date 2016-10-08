@@ -16,14 +16,13 @@ RUN buildDeps=' \
 	&& rm -r /var/lib/apt/lists/*
 	
 RUN adduser --disabled-password --gecos '' maxwell
-	
+USER maxwell
+
 RUN curl -Lo "maxwell.tar.gz" "$MAXWELL_URL"
 RUN tar -zxvf maxwell.tar.gz maxwell64-3.2/rlm_nl.tar.gz
 RUN rm maxwell.tar.gz
 RUN tar -zxvf maxwell64-3.2/rlm_nl.tar.gz
-RUN rm maxwell64-3.2/rlm_nl.tar.gz
-RUN mv maxwell64-3.2/rlm .
-RUN rm -Rf maxwell64-3.2
+RUN rm -Rf maxwell64-3.2/
 RUN apt-get purge -y --auto-remove $buildDeps
 
 VOLUME /opt/rlm/licenses
