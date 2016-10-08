@@ -19,7 +19,7 @@ RUN curl -Lo "maxwell.tar.gz" "$MAXWELL_URL"
 RUN tar -zxvf maxwell.tar.gz maxwell64-3.2/rlm_nl.tar.gz
 RUN rm maxwell.tar.gz
 RUN cd ./maxwell64-3.2
-RUN tar -zxv rlm_nl.tar.gz
+RUN tar -zxvf rlm_nl.tar.gz
 RUN rm rlm_nl.tar.gz
 RUN apt-get purge -y --auto-remove $buildDeps
 
