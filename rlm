@@ -1,0 +1,78 @@
+#!/bin/sh
+# /etc/init.d/rlm
+#          Start/Stop rlm
+#
+# chkconfig: 345 26 74
+# description: The rlm license server serves out licenses for various licensed products
+# processname: rlm
+### BEGIN INIT INFO
+# Provides: rlm
+# Required-Start: $local_fs
+# Required-Stop: $local_fs
+# Default-Start:  2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: start and stop rlm
+# Description: serves out licenses for various licensed products
+### END INIT INFO
+
+#----------------------------------------------------------------
+#----------------------------------------------------------------
+#----------------------------------------------------------------
+# NOTE:
+# NOTE: Configure these 5 variables for your system
+# NOTE:
+
+# Set rlmuser to the user under which rlm will run
+rlmuser=root
+
+# Set rlmdir to the directory where the rlm binary is found
+rlmdir=/opt/rlm
+
+# Set rlmdir to the directory where the rlmdown binary is found
+rlmdowndir=$rlmdir
+
+# Set debuglog to the path to the debug log
+debuglog=$rlmdir/logs/rlm.log
+
+# Set licenses path
+licsdir=$rlmdir/licenses
+
+#----------------------------------------------------------------
+#----------------------------------------------------------------
+#----------------------------------------------------------------
+
+start() {
+        "cd $licsdir; $rlmdir/rlm -c $licsdir -dlog $debuglog &"
+}
+
+stop() {
+        "cd $licsdir; $rlmdir/rlmdown nextlimit RLM -q"
+}
+
+reread() {
+        "cd $licsdir; $rlmdir/rlmutil rlmreread nextlimit"
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  reread)
+        reread
+        ;;
+  restart)
+        stop
+        sleep 2
+        start
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart|reread}"
+        exit 1
+esac
+
+exit 0
+
+
