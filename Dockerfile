@@ -6,6 +6,7 @@ RUN adduser maxwell sudo
 
 RUN buildDeps=' \
 		curl \
+		sudo \
 	' \
 	set -x \
 	&& apt-get update \
