@@ -8,6 +8,10 @@ RUN buildDeps=' \
 	&& apt-get update \
 	&& apt-get install -y $buildDeps \
 	&& rm -r /var/lib/apt/lists/*
+	
+RUN apt-get update \
+	&& apt-get install -y vi \
+	&& rm -r /var/lib/apt/lists/*
 
 ENV RLM_PREFIX /opt
 RUN mkdir -p "$RLM_PREFIX"
