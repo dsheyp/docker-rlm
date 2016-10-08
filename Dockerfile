@@ -1,8 +1,6 @@
 FROM debian:jessie
 MAINTAINER dsheyp
 
-RUN adduser --disabled-password --gecos '' maxwell
-
 RUN buildDeps=' \
 		curl \
 	' \
@@ -22,9 +20,9 @@ RUN tar -zxvf maxwell.tar.gz maxwell64-3.2/rlm_nl.tar.gz
 RUN rm maxwell.tar.gz
 RUN tar -zxvf maxwell64-3.2/rlm_nl.tar.gz
 RUN rm -Rf maxwell64-3.2/
+RUN curl -o "rlminit" https://raw.githubusercontent.com/dsheyp/docker-rlm/master/rlm
+RUN mv rlminit rlm/init.d_script/rlm
 RUN apt-get purge -y --auto-remove $buildDeps
-RUN chown -R maxwell:maxwell "$RLM_PREFIX"
-USER maxwell
 
 VOLUME /opt/rlm/licenses
 VOLUME /opt/rlm/logs
