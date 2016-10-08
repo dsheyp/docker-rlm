@@ -14,7 +14,7 @@ RUN buildDeps=' \
 	&& apt-get update \
 	&& apt-get install -y $buildDeps \
 	&& rm -r /var/lib/apt/lists/* \
-	&& curl -SL '$MAXWELL_URL' -o maxwell.tar.gz \
+	&& curl -SL '$MAXWELL_URL' > maxwell.tar.gz \
 	&& tar -zxvf maxwell.tar.gz maxwell64-3.2/rlm_nl.tar.gz \
 	&& rm maxwell.tar.gz* \
 	&& tar -zxv rlm_nl.tar.gz --strip-components=1 \
