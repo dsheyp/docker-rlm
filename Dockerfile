@@ -24,4 +24,5 @@ RUN buildDeps=' \
 VOLUME /opt/rlm/licenses
 VOLUME /opt/rlm/logs
 
+
 CMD ["/opt/rlm/init.d_script/rlm", "start"]
