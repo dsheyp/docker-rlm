@@ -15,7 +15,7 @@ RUN buildDeps=' \
 	&& apt-get install -y $buildDeps \
 	&& rm -r /var/lib/apt/lists/*
 	
-RUN curl -SL '$MAXWELL_URL' > maxwell.tar.gz
+RUN curl -Lo "maxwell.tar.gz" "$MAXWELL_URL"
 
 RUN tar -zxvf maxwell.tar.gz maxwell64-3.2/rlm_nl.tar.gz \
 
