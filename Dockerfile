@@ -29,4 +29,7 @@ USER maxwell
 VOLUME /opt/rlm/licenses
 VOLUME /opt/rlm/logs
 
+EXPOSE 5053
+EXPOSE 5054
+
 CMD ["/opt/rlm/init.d_script/rlm", "start"]
