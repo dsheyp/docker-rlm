@@ -21,6 +21,9 @@ RUN rm maxwell.tar.gz
 RUN cd ./maxwell64-3.2
 RUN tar -zxvf rlm_nl.tar.gz
 RUN rm rlm_nl.tar.gz
+RUN mv ./rlm ../.
+RUN cd ../.
+RUN rm -Rf ./maxwell64-3.2
 RUN apt-get purge -y --auto-remove $buildDeps
 
 VOLUME /opt/rlm/licenses
