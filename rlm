@@ -42,15 +42,15 @@ licsdir=$rlmdir/licenses
 #----------------------------------------------------------------
 
 start() {
-        "cd $licsdir; $rlmdir/rlm -c $licsdir -dlog $debuglog &"
+        cd $licsdir; $rlmdir/rlm -c $licsdir -dlog $debuglog &
 }
 
 stop() {
-        "cd $licsdir; $rlmdir/rlmdown nextlimit RLM -q"
+        cd $licsdir; $rlmdir/rlmdown nextlimit RLM -q
 }
 
 reread() {
-        "cd $licsdir; $rlmdir/rlmutil rlmreread nextlimit"
+        cd $licsdir; $rlmdir/rlmutil rlmreread nextlimit
 }
 
 case "$1" in
@@ -74,5 +74,3 @@ case "$1" in
 esac
 
 exit 0
-
-
