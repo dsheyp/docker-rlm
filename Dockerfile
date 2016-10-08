@@ -32,7 +32,11 @@ RUN apt-get purge -y --auto-remove $buildDeps
 VOLUME /opt/rlm/licenses
 VOLUME /opt/rlm/logs
 
+# rlm server
 EXPOSE 5053
+# admin gui
 EXPOSE 5054
+# isv server
+EXPOSE 54500
 
 CMD ["/opt/rlm/init.d_script/rlm", "start"]
